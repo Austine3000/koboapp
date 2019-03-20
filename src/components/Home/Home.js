@@ -6,7 +6,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <nav>
+        <nav className="nav-custom-style">
           <ul className="nav justify-content-end">
             <li className="nav-item">
               <NavLink className="nav-link active" to="/">
