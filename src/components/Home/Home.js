@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import * as home from "../../store/actions";
 import { Bar } from "react-chartjs-2";
 import "./Home.scss";
 
@@ -46,6 +48,9 @@ const options = {
   }
 };
 class Home extends Component {
+  componentWillMount() {
+    this.props.onGetAllGraphContent();
+  }
   render() {
     return (
       <div>
@@ -138,7 +143,7 @@ class Home extends Component {
           <div className="col-sm-9">
             <div className="main-content-area">
               <h2 className="page-name">Shipping & Trip report</h2>
-              <Bar data={data} options={options} height={80} />
+              <Bar data={this.props.graphdata} options={options} height={80} />
               <h2 className="page-name">Active Trips</h2>
               <table class="table">
                 <thead>
@@ -252,4 +257,19 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    graphdata: state.home.graphdata
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetAllGraphContent: () => dispatch(home.getAllGraphContent())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
