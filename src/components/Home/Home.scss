@@ -1,7 +1,106 @@
 .nav-custom-style {
-  background-color: blue;
-
+  background-color: rgb(49, 49, 155);
+  padding: 10px 10px;
   a {
     color: #fff;
+    font-size: 13px;
+  }
+}
+
+.welcome-heading-style {
+  padding: 50px 120px 10px 50px;
+  h2 {
+    font-size: 21px;
+  }
+  .company-name {
+    font-weight: 100;
+    color: rgb(49, 49, 155);
+  }
+  .welcome-note {
+    font-weight: bold;
+    color: #070707;
+  }
+}
+
+.side-bar-style {
+  padding: 10px 0px 0px 30px;
+  background-color: rgb(49, 49, 155);
+  color: #fff;
+  p {
+    margin: 0px;
+  }
+}
+
+.side-bar-inner-style {
+  padding: 15px 20px;
+  border-bottom: 1px solid #fff;
+}
+
+.side-bar-inner-last-style {
+  padding: 15px 20px;
+}
+
+.side-title {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.main-content-area {
+  padding: 50px 120px 10px 50px;
+  h2 {
+    font-size: 21px;
+  }
+  .page-name {
+    font-weight: bold;
+    color: rgb(49, 49, 155);
+  }
+
+  canvas {
+    margin: 50px 0px;
+  }
+
+  table {
+    tr {
+      font-size: 12px;
+      .to-style {
+        color: rgb(49, 49, 155);
+        font-weight: bold;
+      }
+
+      .dot {
+        height: 7px;
+        width: 7px;
+        margin-right: 5px;
+        background-color: #e56666;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .table-heading {
+        border-bottom: 2px solid rgb(49, 49, 155);
+        border-top: 0px;
+        color: rgb(49, 49, 155);
+      }
+    }
+  }
+}
+
+.footer-custom-style {
+  background-color: gray;
+  padding: 50px 100px;
+  color: #fff;
+  .footer-heading {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .footer-paragraph {
+    font-size: 12px;
+    padding-right: 125px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
   }
 }
