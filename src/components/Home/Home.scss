@@ -1,10 +1,41 @@
 .nav-custom-style {
   background-color: rgb(49, 49, 155);
-  padding: 10px 10px;
+  padding: 0px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
   a {
     color: #fff;
     font-size: 13px;
   }
+}
+
+.modal-custom-style {
+  margin-top: 140px;
+}
+
+.body-content-area {
+  margin-top: 90px;
+}
+
+.sticky {
+  top: 30px;
+}
+.logo-box {
+  background: #fff;
+  position: relative;
+  box-shadow: 0px 2px 4px 1px #bcb5b5;
+}
+
+.nav-bar-padding {
+  padding: 10px;
+}
+
+.image-responsive {
+  width: 100%;
+  height: auto;
 }
 
 .welcome-heading-style {
@@ -71,9 +102,27 @@
         height: 7px;
         width: 7px;
         margin-right: 5px;
-        background-color: #e56666;
         border-radius: 50%;
         display: inline-block;
+      }
+
+      .dot-loading {
+        background-color: #ffde07;
+      }
+
+      .dot-enroute {
+        background-color: #6262d3;
+      }
+
+      .dot-delivered {
+        background-color: #14e914;
+      }
+      .dot-pending {
+        background-color: #bcb8b8;
+      }
+
+      .dot-cancelled {
+        background-color: #e56666;
       }
       .table-heading {
         border-bottom: 2px solid rgb(49, 49, 155);
