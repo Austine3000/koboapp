@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import LogoModal from "./LogoModal";
 import * as home from "../../store/actions";
 import { Bar } from "react-chartjs-2";
 import "./Home.scss";
@@ -17,15 +18,33 @@ const options = {
   }
 };
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
   componentWillMount() {
     this.props.onGetAllGraphContent();
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
   render() {
     return (
       <div>
         <nav className="nav-custom-style navbar-static-top">
           <div className="row">
-            <div className="col-md-1 logo-box nav-bar-padding">
+            <div
+              className="col-md-1 logo-box nav-bar-padding"
+              onClick={() => this.toggle()}
+            >
               <div>
                 <img
                   src="/assets/dhl-business.png"
@@ -277,6 +296,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <LogoModal toggle={this.toggle} state={this.state} />
       </div>
     );
   }
