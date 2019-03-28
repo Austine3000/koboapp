@@ -25,7 +25,7 @@ class Home extends Component {
       <div>
         <nav className="nav-custom-style navbar-static-top">
           <div className="row">
-            <div className="col-md-2 logo-box nav-bar-padding">
+            <div className="col-md-1 logo-box nav-bar-padding">
               <div>
                 <img
                   src="/assets/dhl-business.png"
@@ -34,8 +34,8 @@ class Home extends Component {
                 />
               </div>
             </div>
-            <div className="col-md-10 nav-bar-padding">
-              <ul className="nav justify-content-end">
+            <div className="col-md-11 nav-bar-padding">
+              <ul className="nav justify-content-center">
                 <li className="nav-item">
                   <NavLink className="nav-link active" to="/">
                     Dashboard
@@ -163,7 +163,7 @@ class Home extends Component {
                       <td className="table-body">40ft Flatbed</td>
                       <td className="table-body">
                         {" "}
-                        <span className="dot" />
+                        <span className="dot dot-loading" />
                         Loading
                       </td>
                     </tr>
@@ -180,7 +180,7 @@ class Home extends Component {
                       <td>40ft Flatbed</td>
                       <td>
                         {" "}
-                        <span className="dot" />
+                        <span className="dot dot-enroute" />
                         Enroute
                       </td>
                     </tr>
@@ -197,8 +197,42 @@ class Home extends Component {
                       <td>40ft Flatbed</td>
                       <td>
                         {" "}
-                        <span className="dot" />
+                        <span className="dot dot-delivered" />
                         Delivered
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>2342</b> <br />
+                        20/01/19
+                      </td>
+                      <td>
+                        Apapa, Lagos, Nigeria{" "}
+                        <span className="to-style">to</span> Ore-Ondo road,
+                        Ondo, Nigeria
+                      </td>
+                      <td>40ft Flatbed</td>
+                      <td>
+                        {" "}
+                        <span className="dot dot-pending" />
+                        Pending
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>2342</b> <br />
+                        20/01/19
+                      </td>
+                      <td>
+                        Apapa, Lagos, Nigeria{" "}
+                        <span className="to-style">to</span> Ore-Ondo road,
+                        Ondo, Nigeria
+                      </td>
+                      <td>40ft Flatbed</td>
+                      <td>
+                        {" "}
+                        <span className="dot dot-cancelled" />
+                        Cancelled
                       </td>
                     </tr>
                   </tbody>
