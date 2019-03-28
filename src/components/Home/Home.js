@@ -6,6 +6,14 @@ import * as home from "../../store/actions";
 import { Bar } from "react-chartjs-2";
 import "./Home.scss";
 
+let logoBox = {
+  background: "#fff",
+  position: "relative",
+  boxShadow: "0px 2px 4px 1px #bcb5b5"
+};
+let navbar;
+let sticky;
+let logoId;
 const options = {
   scales: {
     yAxes: [
@@ -27,8 +35,14 @@ class Home extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.onGetAllGraphContent();
+    window.addEventListener("scroll", this.scrollPage);
+    navbar = document.getElementById("navbar");
+    logoId = document.getElementById("logoId");
+
+    // Get the offset position of the navbar
+    sticky = navbar.offsetTop;
   }
 
   toggle() {
@@ -36,13 +50,23 @@ class Home extends Component {
       modal: !prevState.modal
     }));
   }
+
+  scrollPage = () => {
+    if (window.pageYOffset > sticky) {
+      logoId.classList.remove("sticky");
+    } else {
+      logoId.classList.add("sticky");
+    }
+  };
   render() {
     return (
       <div>
-        <nav className="nav-custom-style navbar-static-top">
+        <nav id="navbar" className="nav-custom-style navbar-static-top">
           <div className="row">
             <div
-              className="col-md-1 logo-box nav-bar-padding"
+              id="logoId"
+              className="col-md-1 nav-bar-padding sticky"
+              style={logoBox}
               onClick={() => this.toggle()}
             >
               <div>
