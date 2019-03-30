@@ -8,12 +8,13 @@ import "./Home.scss";
 
 let logoBox = {
   background: "#fff",
-  position: "relative",
-  boxShadow: "0px 2px 4px 1px #bcb5b5"
+  position: "relative"
 };
 let navbar;
 let sticky;
 let logoId;
+let chartHeight = 80;
+let mediaChangeList;
 const options = {
   scales: {
     yAxes: [
@@ -38,7 +39,9 @@ class Home extends Component {
   componentDidMount() {
     this.props.onGetAllGraphContent();
     window.addEventListener("scroll", this.scrollPage);
-    navbar = document.getElementById("navbar");
+    mediaChangeList = window.matchMedia("(max-width: 760px)");
+    mediaChangeList.addListener(this.watchMediaChange);
+    navbar = document.getElementById("nav-bar");
     logoId = document.getElementById("logoId");
 
     // Get the offset position of the navbar
@@ -51,6 +54,14 @@ class Home extends Component {
     }));
   }
 
+  watchMediaChange = () => {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      chartHeight = 200;
+    } else {
+      chartHeight = 80;
+    }
+  };
+
   scrollPage = () => {
     if (window.pageYOffset > sticky) {
       logoId.classList.remove("sticky");
@@ -59,78 +70,96 @@ class Home extends Component {
     }
   };
   render() {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      chartHeight = 200;
+    } else {
+      chartHeight = 80;
+    }
     return (
       <div>
-        <nav id="navbar" className="nav-custom-style navbar-static-top">
-          <div className="row">
-            <div
-              id="logoId"
-              className="col-md-1 nav-bar-padding sticky"
-              style={logoBox}
-              onClick={() => this.toggle()}
-            >
-              <div>
-                <img
-                  src="/assets/dhl-business.png"
-                  alt="logo"
-                  className="image-responsive"
-                />
-              </div>
-            </div>
-            <div className="col-md-11 nav-bar-padding">
-              <ul className="nav justify-content-center">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" to="/">
-                    Dashboard
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Requests
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Trips
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Routes
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Battlefield
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Wallet
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Notification|234
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Settings
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
-                    Logout
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
+        <nav id="nav-bar" className="navbar nav-custom-style navbar-expand-lg">
+          <span
+            id="logoId"
+            className="nav-bar-padding img-dimesion sticky"
+            style={logoBox}
+            onClick={() => this.toggle()}
+          >
+            <span>
+              <img
+                src="/assets/dhl-business.png"
+                alt="logo"
+                className="image-responsive"
+              />
+            </span>
+          </span>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon" />
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-center"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav">
+              <li className="nav-item">
+                <NavLink className="nav-link active" to="/">
+                  Dashboard
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Requests
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Trips
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Routes
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Battlefield
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Wallet
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Notification|234
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Settings
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Logout
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </nav>
         <div>
-          <div className="row body-content-area">
-            <div className="col-sm-3">
+          <div id="row-custom-style" className="row body-content-area">
+            <div className="col-sm-3 custom-side-bar-style">
               <div className="welcome-heading-style">
                 <h2 className="welcome-note">WELCOME</h2>
                 <h2 className="company-name">DHL Worldwide Express</h2>
@@ -172,7 +201,7 @@ class Home extends Component {
                 <Bar
                   data={this.props.graphdata}
                   options={options}
-                  height={80}
+                  height={chartHeight}
                 />
                 <h2 className="page-name">Active Trips</h2>
                 <table class="table">
@@ -283,7 +312,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="row footer-custom-style">
+          <div id="row-custom-style" className="row footer-custom-style">
             <div className="col-sm-5">
               <h5 className="footer-heading">Kobo360</h5>
               <p className="footer-paragraph">
@@ -297,7 +326,7 @@ class Home extends Component {
             </div>
             <div className="col-sm-2">
               <h5 className="footer-heading">For Shippers</h5>
-              <ul>
+              <ul className="list-padding-bottom">
                 <li>Login</li>
                 <li>Terms of service</li>
                 <li>Privacy policy</li>
@@ -305,7 +334,7 @@ class Home extends Component {
             </div>
             <div className="col-sm-2">
               <h5 className="footer-heading">For Shippers</h5>
-              <ul>
+              <ul className="list-padding-bottom">
                 <li>Login</li>
                 <li>Terms of service</li>
                 <li>Privacy policy</li>
