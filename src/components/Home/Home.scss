@@ -1,6 +1,6 @@
 .nav-custom-style {
   background-color: rgb(49, 49, 155);
-  padding: 0px 10px;
+  padding: 0px;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +12,16 @@
   }
 }
 
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  margin-right: 8px;
+  line-height: 1;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+}
+
 .modal-custom-style {
   margin-top: 140px;
 }
@@ -20,9 +30,27 @@
   margin-top: 90px;
 }
 
+.img-dimesion {
+  height: 65px;
+  width: 130px;
+}
+
+#row-custom-style {
+  margin-right: 0px;
+}
+
 .sticky {
   top: 30px;
+  box-shadow: 0px 2px 4px 1px #bcb5b5;
 }
+
+@media screen and (max-width: 960px) {
+  .sticky {
+    top: 0px;
+    box-shadow: 0px;
+  }
+}
+
 .logo-box {
   background: #fff;
   position: relative;
@@ -30,7 +58,12 @@
 }
 
 .nav-bar-padding {
-  padding: 10px;
+  padding: 20px;
+}
+
+#navbarSupportedContent .navbar-nav .nav-link {
+  padding-right: 2.5rem;
+  padding-left: 1.5rem;
 }
 
 .image-responsive {
@@ -71,13 +104,28 @@
   padding: 15px 20px;
 }
 
+.custom-side-bar-style {
+  padding-right: 0px;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+
+  border-bottom: 11px solid #eee;
+  border-top: 9px solid #eee;
+  background-size: 100% 100%;
+}
+
 .side-title {
   font-weight: bold;
   font-size: 13px;
 }
 
 .main-content-area {
-  padding: 50px 120px 10px 50px;
+  padding: 50px 10px 50px 10px;
   h2 {
     font-size: 21px;
   }
@@ -146,10 +194,23 @@
     padding-right: 125px;
   }
 
+  .list-padding-bottom {
+    padding-bottom: 10px;
+  }
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .footer-custom-style {
+    padding: 25px 50px;
+    .footer-paragraph {
+      padding-right: 25px;
+    }
   }
 }
